@@ -1,0 +1,3 @@
+INHERITING WEBDRIVER THROUGHOUT YOUR PAGE OBJECT CLASSES
+https://angiejones.tech/inheriting-webdriver/
+create a base test class which defines a WebDriver object, instantiates it, and then sets it in a base page
