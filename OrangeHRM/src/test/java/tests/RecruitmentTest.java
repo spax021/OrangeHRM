@@ -41,5 +41,17 @@ public class RecruitmentTest extends BaseTest {
 		recruitmentPage.searchForCandidate();
 		recruitmentPage.verifyCandidateIsFound();
 	}
+	
+
+	@Test(description= "Verify that Admin can edit candidate")
+	public void verifyEditingCandidate() {
+		dashboardPage.clickRecruitmentMenu();
+		recruitmentPage.enterCandidateFirstname();
+		recruitmentPage.choseCandidateFromList();
+		recruitmentPage.searchForCandidate();
+		recruitmentPage.verifyCandidateIsFound();
+	}
+	
+	
 
 }
