@@ -5,7 +5,7 @@
     <classes>
       <class name="tests.RecruitmentTest">
         <methods>
-          <include name="verifySearchingCandidateByName"/>
+          <include name="verifyEditingCandidate"/>
           <include name="setUp"/>
           <include name="tearDown"/>
           <include name="lounchApplication"/>

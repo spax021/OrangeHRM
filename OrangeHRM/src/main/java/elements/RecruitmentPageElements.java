@@ -31,8 +31,11 @@ public class RecruitmentPageElements {
 	private By notes = By.cssSelector(".oxd-form-row:nth-child(6) .oxd-textarea");
 	private By consentCheckbox = By.cssSelector(".oxd-form-row:nth-child(7) .oxd-checkbox-input-icon");
 	private By cancelButton = By.cssSelector(".oxd-form-actions .oxd-button:nth-child(2)");
-	private By saveButton = By.cssSelector(".oxd-form-actions .oxd-button:nth-child(3)");
+	private By saveButton = By.cssSelector("button[type='submit']");
+	//Candidate EDIT section
+	private By candidateEditButton = By.cssSelector(".oxd-switch-wrapper .oxd-switch-input");
 	
+		
 	// Recruitment Application Stage of new candidate elements
 	private By candidateFullName = By.cssSelector(".oxd-grid-3 .oxd-text");
 	private By rejectButton = By.cssSelector("button.oxd-button.oxd-button--danger");
@@ -42,10 +45,19 @@ public class RecruitmentPageElements {
 	private By resultResultDeleteButton;
 	private By resultResultCheckBox;
 	private By resultCandidateName = By.cssSelector(".oxd-table-card .oxd-table-cell:nth-child(3)");
-	private By resultResultActionView;
+	private By resultResultActionView = By.cssSelector(".oxd-table-card .oxd-table-cell-actions .bi-eye-fill");
 	private By resultResultActionDelete;
 	private By resultSpinner = By.cssSelector(".oxd-loading-spinner");
 	
+	//Toast message / bottom left
+	private By toastMessageSuccessfull = By.id("oxd-toaster_1");
+	
+	public By getToastMessageSuccessfull() {
+		return toastMessageSuccessfull;
+	}	
+	public By getCandidateEditButton() {
+		return candidateEditButton;
+	}	
 	public By getResultResultsNumber() {
 		return resultResultsNumber;
 	}
@@ -94,7 +106,7 @@ public class RecruitmentPageElements {
 	public By getSearchCandidateOptions(String fullName) {
 		// div.oxd-autocomplete-option>span
 		// /span[contains(text(), '" + "testFirstname" + "')
-		searchCandidateOptions = By.xpath("//span[contains(text(), '" + "testFirstname" + "')]");
+		searchCandidateOptions = By.xpath("//span[contains(text(), '" + fullName + "')]");
 		return searchCandidateOptions;
 	}
 	public By getSearchButton() {

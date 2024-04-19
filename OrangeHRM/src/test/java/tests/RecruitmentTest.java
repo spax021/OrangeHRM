@@ -24,7 +24,7 @@ public class RecruitmentTest extends BaseTest {
 		quitBrowser();
 	}
 
-	@Test(description= "Verify that Admin can add new candidate to recrutiment page")
+	@Test(priority = -1, description= "Verify that Admin can add new candidate to recrutiment page")
 	public void verifyAddingNewCandidate()  {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.clickAddNewCandidateButton();
@@ -33,7 +33,7 @@ public class RecruitmentTest extends BaseTest {
 		recruitmentPage.verifyNewCandidateIsCreated();
 	}
 
-	@Test(description= "Verify that Admin can search for a candidate by name")
+	@Test(priority = 0, description= "Verify that Admin can search for a candidate by name")
 	public void verifySearchingCandidateByName() {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.enterCandidateFirstname();
@@ -43,13 +43,20 @@ public class RecruitmentTest extends BaseTest {
 	}
 	
 
-	@Test(description= "Verify that Admin can edit candidate")
+	@Test(priority = 1, description= "Verify that Admin can edit candidate")
 	public void verifyEditingCandidate() {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.enterCandidateFirstname();
 		recruitmentPage.choseCandidateFromList();
 		recruitmentPage.searchForCandidate();
 		recruitmentPage.verifyCandidateIsFound();
+		recruitmentPage.clickOnActionView();
+		recruitmentPage.clickOnEditButton();
+		recruitmentPage.editFirstname();
+		recruitmentPage.editLastname();
+		recruitmentPage.saveExistingCandidate();
+		recruitmentPage.verifyChangesAreApplied();
+		
 	}
 	
 	

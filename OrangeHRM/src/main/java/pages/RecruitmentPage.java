@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import config.PropertiesFile;
@@ -60,7 +61,6 @@ public class RecruitmentPage extends BasePage{
 		driver.findElement(recruitmentPageElements.getSaveButton()).click();
 	}
 	
-	
 	public void cancelNewCandidate() {
 		driver.findElement(recruitmentPageElements.getSaveButton()).click();
 	}
@@ -88,11 +88,60 @@ public class RecruitmentPage extends BasePage{
 		driver.findElement(recruitmentPageElements.getSearchButton()).click();
 	}
 
+	/**This method is verifying that loading spiner is removed from DOM three once the action is executed and changes are saved
+	*/
+	public void verifySpinerIsRemovedFromDOMThree() {
+		waitForElementRemovedFromDomThree(recruitmentPageElements.getResultSpinner());
+	}
 	
 	public void verifyCandidateIsFound() {
-		waitForElementRemovedFromDomThree(recruitmentPageElements.getResultSpinner());
+		verifySpinerIsRemovedFromDOMThree();
 		Assert.assertEquals(driver.findElement(recruitmentPageElements.getResultCandidateName()).getText(), fullName);
 	}
 
+	public void clickOnActionView() {
+		driver.findElement(recruitmentPageElements.getResultResultActionView()).click();
+		verifyNewCandidateIsCreated(); // Using this method since same Reject button is visible after locating existing user
+	}
 	
+	public void clickOnEditButton() {
+		waitForElementClickable(recruitmentPageElements.getCandidateEditButton());
+		driver.findElement(recruitmentPageElements.getCandidateEditButton()).click();
+	}
+	
+	private String editedFirstname = "Edit" + PropertiesFile.getFirstname();
+	private String editedLastname = "Edit" + PropertiesFile.getLastname();
+	private String editedFullName = editedFirstname + " " + PropertiesFile.getMiddlename() + " " + editedLastname; 
+	
+	/** custom JavaScript on the page is interfering with the input field therefore .clear() method is not working
+	 * custom method had to be created which is simulating CONTROL + a, then DELETE
+	*/
+	private void removeTextFromInputField(By element) {
+		driver.findElement(element).click();
+		driver.findElement(element).sendKeys(Keys.CONTROL + "a");
+		driver.findElement(element).sendKeys(Keys.DELETE);
+	}
+	
+	public void editFirstname() {
+		waitForElementClickable(recruitmentPageElements.getFirstName());
+		removeTextFromInputField(recruitmentPageElements.getFirstName());
+		driver.findElement(recruitmentPageElements.getFirstName()).sendKeys(editedFirstname);
+	}
+	
+	public void editLastname() {
+		waitForElementClickable(recruitmentPageElements.getLastName());
+		removeTextFromInputField(recruitmentPageElements.getLastName());
+		driver.findElement(recruitmentPageElements.getLastName()).sendKeys(editedLastname);
+	}
+
+	public void saveExistingCandidate () {
+		saveNewCandidate(); //reusing this method, save button is the same
+	}
+
+	private void verifySuccessfullToastMessage() {
+		waitForElementVisible(recruitmentPageElements.getToastMessageSuccessfull());
+	}
+	public void verifyChangesAreApplied() {
+		verifySuccessfullToastMessage();
+	}
 }
