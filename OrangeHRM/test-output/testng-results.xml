@@ -1,105 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="2" failed="1" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-19T13:22:33 CEST" name="Default suite" finished-at="2024-04-19T13:23:17 CEST" duration-ms="44132">
+  <suite started-at="2024-05-07T13:58:28 CEST" name="Default suite" finished-at="2024-05-07T13:59:14 CEST" duration-ms="46208">
     <groups>
     </groups>
-    <test started-at="2024-04-19T13:22:33 CEST" name="Default test" finished-at="2024-04-19T13:23:17 CEST" duration-ms="44132">
-      <class name="tests.RecruitmentTest">
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:33 CEST" name="lounchApplication" finished-at="2024-04-19T13:22:38 CEST" duration-ms="5615" status="PASS">
+    <test started-at="2024-05-07T13:58:28 CEST" name="Default test" finished-at="2024-05-07T13:59:14 CEST" duration-ms="46208">
+      <class name="ui.tests.RecruitmentTest">
+        <test-method is-config="true" signature="setLocal()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:28 CEST" name="setLocal" finished-at="2024-05-07T13:58:33 CEST" duration-ms="5947" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setLocal -->
+        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:34 CEST" name="lounchApplication" finished-at="2024-05-07T13:58:37 CEST" duration-ms="3630" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:38 CEST" name="setUp" finished-at="2024-04-19T13:22:41 CEST" duration-ms="2166" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:37 CEST" name="setUp" finished-at="2024-05-07T13:58:39 CEST" duration-ms="2312" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyAddingNewCandidate()[pri:-1, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:41 CEST" name="verifyAddingNewCandidate" description="Verify that Admin can add new candidate to recrutiment page" finished-at="2024-04-19T13:22:52 CEST" duration-ms="11182" status="PASS">
+        <test-method signature="verifyAddingNewCandidate()[pri:-1, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:39 CEST" name="verifyAddingNewCandidate" description="Verify that Admin can add new candidate to recrutiment page" finished-at="2024-05-07T13:58:50 CEST" duration-ms="10175" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddingNewCandidate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:52 CEST" name="tearDown" finished-at="2024-04-19T13:22:52 CEST" duration-ms="398" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:50 CEST" name="tearDown" finished-at="2024-05-07T13:58:50 CEST" duration-ms="345" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:52 CEST" name="lounchApplication" finished-at="2024-04-19T13:22:56 CEST" duration-ms="3372" status="PASS">
+        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:50 CEST" name="lounchApplication" finished-at="2024-05-07T13:58:53 CEST" duration-ms="2778" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:56 CEST" name="setUp" finished-at="2024-04-19T13:22:58 CEST" duration-ms="2114" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:53 CEST" name="setUp" finished-at="2024-05-07T13:58:55 CEST" duration-ms="2224" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifySearchingCandidateByName()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:22:58 CEST" name="verifySearchingCandidateByName" description="Verify that Admin can search for a candidate by name" finished-at="2024-04-19T13:23:02 CEST" duration-ms="4638" status="PASS">
+        <test-method signature="verifySearchingCandidateByName()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:55 CEST" name="verifySearchingCandidateByName" description="Verify that Admin can search for a candidate by name" finished-at="2024-05-07T13:59:00 CEST" duration-ms="4757" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchingCandidateByName -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:23:02 CEST" name="tearDown" finished-at="2024-04-19T13:23:03 CEST" duration-ms="297" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:00 CEST" name="tearDown" finished-at="2024-05-07T13:59:00 CEST" duration-ms="292" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:23:03 CEST" name="lounchApplication" finished-at="2024-04-19T13:23:06 CEST" duration-ms="3340" status="PASS">
+        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:00 CEST" name="lounchApplication" finished-at="2024-05-07T13:59:03 CEST" duration-ms="2823" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:23:06 CEST" name="setUp" finished-at="2024-04-19T13:23:08 CEST" duration-ms="2191" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:03 CEST" name="setUp" finished-at="2024-05-07T13:59:05 CEST" duration-ms="2251" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyEditingCandidate()[pri:1, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:23:08 CEST" name="verifyEditingCandidate" description="Verify that Admin can edit candidate" finished-at="2024-04-19T13:23:16 CEST" duration-ms="8089" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [true] but found [false]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
-at org.testng.Assert.fail(Assert.java:99)
-at org.testng.Assert.failNotEquals(Assert.java:1037)
-at org.testng.Assert.assertTrue(Assert.java:45)
-at org.testng.Assert.assertTrue(Assert.java:55)
-at pages.RecruitmentPage.verifySuccessfullToastMessage(RecruitmentPage.java:144)
-at pages.RecruitmentPage.verifyChangesAreApplied(RecruitmentPage.java:148)
-at tests.RecruitmentTest.verifyEditingCandidate(RecruitmentTest.java:58)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:567)
-at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
-at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
-at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
-at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
-at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
-at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:794)
-at org.testng.TestRunner.run(TestRunner.java:596)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
-at org.testng.SuiteRunner.run(SuiteRunner.java:276)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
-at org.testng.TestNG.runSuites(TestNG.java:1063)
-at org.testng.TestNG.run(TestNG.java:1031)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="verifyEditingCandidate()[pri:1, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:05 CEST" name="verifyEditingCandidate" description="Verify that Admin can edit candidate" finished-at="2024-05-07T13:59:13 CEST" duration-ms="8244" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyEditingCandidate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:tests.RecruitmentTest@2c35e847]" started-at="2024-04-19T13:23:16 CEST" name="tearDown" finished-at="2024-04-19T13:23:17 CEST" duration-ms="657" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:13 CEST" name="tearDown" finished-at="2024-05-07T13:59:14 CEST" duration-ms="353" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- tests.RecruitmentTest -->
+      </class> <!-- ui.tests.RecruitmentTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

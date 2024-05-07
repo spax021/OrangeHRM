@@ -1,9 +1,11 @@
-package tests;
+package ui.tests;
 
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import api.tests.BaseApiTest;
 import pages.DashboardPage;
 import pages.RecruitmentPage;
 
@@ -11,7 +13,15 @@ public class RecruitmentTest extends BaseTest {
 
 	private RecruitmentPage recruitmentPage;
 	private DashboardPage dashboardPage;
+	private BaseApiTest baseApiTest;
 
+	@BeforeClass
+	public void setLocal() {
+		baseApiTest = new BaseApiTest();
+		BaseApiTest.setLocalisation();
+		System.out.println("This is executed");
+	}
+	
 	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
 		recruitmentPage = new RecruitmentPage();
