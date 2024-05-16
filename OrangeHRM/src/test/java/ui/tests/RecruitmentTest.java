@@ -13,11 +13,9 @@ public class RecruitmentTest extends BaseTest {
 
 	private RecruitmentPage recruitmentPage;
 	private DashboardPage dashboardPage;
-	private BaseApiTest baseApiTest;
 
 	@BeforeClass
 	public void setLocal() {
-		baseApiTest = new BaseApiTest();
 		BaseApiTest.setLocalisation();
 		System.out.println("This is executed");
 	}
@@ -35,7 +33,7 @@ public class RecruitmentTest extends BaseTest {
 	}
 
 	@Test(priority = -1, description= "Verify that Admin can add new candidate to recrutiment page")
-	public void verifyAddingNewCandidate()  {
+	public void TestVerifyAddingNewCandidate()  {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.clickAddNewCandidateButton();
 		recruitmentPage.populateNewCandidateFields();
@@ -44,7 +42,7 @@ public class RecruitmentTest extends BaseTest {
 	}
 
 	@Test(priority = 0, description= "Verify that Admin can search for a candidate by name")
-	public void verifySearchingCandidateByName() {
+	public void TestVerifySearchingCandidateByName() {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.enterCandidateFirstname();
 		recruitmentPage.choseCandidateFromList();
@@ -54,7 +52,7 @@ public class RecruitmentTest extends BaseTest {
 	
 
 	@Test(priority = 1, description= "Verify that Admin can edit candidate")
-	public void verifyEditingCandidate() {
+	public void TestVerifyEditingCandidate() {
 		dashboardPage.clickRecruitmentMenu();
 		recruitmentPage.enterCandidateFirstname();
 		recruitmentPage.choseCandidateFromList();

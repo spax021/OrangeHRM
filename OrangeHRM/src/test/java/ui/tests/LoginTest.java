@@ -23,14 +23,14 @@ public class LoginTest extends BaseTest {
 	
 
 	@Test(description = "Login user to system")
-	public void loginInUser() {
+	public void TestLoginInUser() {
 		loginPage.populateUsernameAndPassword(PropertiesFile.getUsername(), PropertiesFile.getPassword());
 		loginPage.clickLoginButton();
 		loginPage.verifyUserLogedInSuccessfully();
 	}
 	
 	@Test(description = "Login user to system with wrong credentials")
-	public void loginInWithWrongCredentials() {
+	public void TestLoginInWithWrongCredentials() {
 		loginPage.populateUsernameAndPassword(PropertiesFile.getInvalidUsername(), PropertiesFile.getInvalidPassword());
 		loginPage.clickLoginButton();
 		loginPage.verifyUserDidntLogedIn();

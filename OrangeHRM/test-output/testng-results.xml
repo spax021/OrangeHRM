@@ -1,65 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-07T13:58:28 CEST" name="Default suite" finished-at="2024-05-07T13:59:14 CEST" duration-ms="46208">
+  <suite started-at="2024-05-16T13:38:27 CEST" name="Default suite" finished-at="2024-05-16T13:38:34 CEST" duration-ms="7361">
     <groups>
     </groups>
-    <test started-at="2024-05-07T13:58:28 CEST" name="Default test" finished-at="2024-05-07T13:59:14 CEST" duration-ms="46208">
-      <class name="ui.tests.RecruitmentTest">
-        <test-method is-config="true" signature="setLocal()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:28 CEST" name="setLocal" finished-at="2024-05-07T13:58:33 CEST" duration-ms="5947" status="PASS">
+    <test started-at="2024-05-16T13:38:27 CEST" name="Default test" finished-at="2024-05-16T13:38:34 CEST" duration-ms="7361">
+      <class name="api.tests.RecruitmentApiTest">
+        <test-method is-config="true" signature="setLocal()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:27 CEST" name="setLocal" finished-at="2024-05-16T13:38:32 CEST" duration-ms="5727" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setLocal -->
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:34 CEST" name="lounchApplication" finished-at="2024-05-07T13:58:37 CEST" duration-ms="3630" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:37 CEST" name="setUp" finished-at="2024-05-07T13:58:39 CEST" duration-ms="2312" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:32 CEST" name="setUp" finished-at="2024-05-16T13:38:32 CEST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyAddingNewCandidate()[pri:-1, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:39 CEST" name="verifyAddingNewCandidate" description="Verify that Admin can add new candidate to recrutiment page" finished-at="2024-05-07T13:58:50 CEST" duration-ms="10175" status="PASS">
+        <test-method signature="TestAPIverifyAddingNewCandidate()[pri:-1, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:32 CEST" name="TestAPIverifyAddingNewCandidate" description="Verify that Admin can add new candidate" finished-at="2024-05-16T13:38:33 CEST" duration-ms="951" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAddingNewCandidate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:50 CEST" name="tearDown" finished-at="2024-05-07T13:58:50 CEST" duration-ms="345" status="PASS">
+        </test-method> <!-- TestAPIverifyAddingNewCandidate -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:33 CEST" name="tearDown" finished-at="2024-05-16T13:38:33 CEST" duration-ms="3" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:50 CEST" name="lounchApplication" finished-at="2024-05-07T13:58:53 CEST" duration-ms="2778" status="PASS">
+        <test-method signature="TestAPIverifyAddingAttachmentToNewRecruit()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:33 CEST" name="TestAPIverifyAddingAttachmentToNewRecruit" description="Precondition: TestAPIverifyAddingNewCandidate() executed. Adding attachment is on different endpoint" finished-at="2024-05-16T13:38:34 CEST" duration-ms="600" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:53 CEST" name="setUp" finished-at="2024-05-07T13:58:55 CEST" duration-ms="2224" status="PASS">
+        </test-method> <!-- TestAPIverifyAddingAttachmentToNewRecruit -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:33 CEST" name="setUp" finished-at="2024-05-16T13:38:33 CEST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifySearchingCandidateByName()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:58:55 CEST" name="verifySearchingCandidateByName" description="Verify that Admin can search for a candidate by name" finished-at="2024-05-07T13:59:00 CEST" duration-ms="4757" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySearchingCandidateByName -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:00 CEST" name="tearDown" finished-at="2024-05-07T13:59:00 CEST" duration-ms="292" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:api.tests.RecruitmentApiTest@63376bed]" started-at="2024-05-16T13:38:34 CEST" name="tearDown" finished-at="2024-05-16T13:38:34 CEST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="lounchApplication()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:00 CEST" name="lounchApplication" finished-at="2024-05-07T13:59:03 CEST" duration-ms="2823" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- lounchApplication -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:03 CEST" name="setUp" finished-at="2024-05-07T13:59:05 CEST" duration-ms="2251" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="verifyEditingCandidate()[pri:1, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:05 CEST" name="verifyEditingCandidate" description="Verify that Admin can edit candidate" finished-at="2024-05-07T13:59:13 CEST" duration-ms="8244" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyEditingCandidate -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:ui.tests.RecruitmentTest@4b8ee4de]" started-at="2024-05-07T13:59:13 CEST" name="tearDown" finished-at="2024-05-07T13:59:14 CEST" duration-ms="353" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- ui.tests.RecruitmentTest -->
+      </class> <!-- api.tests.RecruitmentApiTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

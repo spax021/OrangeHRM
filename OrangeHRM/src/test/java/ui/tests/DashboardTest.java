@@ -24,7 +24,7 @@ public class DashboardTest extends BaseTest{
 	}
 	
 	@Test(description = "verify user can close about popup")
-	public void verifyUserCanCloseAboutPopup() {
+	public void TestVerifyUserCanCloseAboutPopup() {
 		popups = new Popups();
 		dashboardPage.openUsersDashboard();
 		dashboardPage.clickAbout();
@@ -33,7 +33,7 @@ public class DashboardTest extends BaseTest{
 	
 	
 	@Test(description = "verify abouts section version")
-	public void verifyAboutSection() {
+	public void TestVerifyAboutSection() {
 		popups = new Popups();
 		dashboardPage.openUsersDashboard();
 		dashboardPage.clickAbout();
@@ -42,7 +42,7 @@ public class DashboardTest extends BaseTest{
 	
 	
 	@Test(description = "Logout user from system")
-	public void logoutUser() {
+	public void TestLogoutUser() {
 		dashboardPage.openUsersDashboard();
 		dashboardPage.clickLogoutButton();
 		dashboardPage.verifyUserLogedOutSuccessfully();
