@@ -15,7 +15,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import config.PropertiesFile;
+import dtos.RecruitAttachmentDTO;
 import dtos.RecruitDTO;
+import dtos.StatusDTO;
+import dtos.VacancyDTO;
 import io.restassured.RestAssured;
 import io.restassured.http.Cookies;
 import io.restassured.response.Response;
@@ -31,7 +34,8 @@ public class BaseApiTest {
 	private static long fileSize = 0;
 	
 	private static Cookies cookies;
-	private static RecruitDTO recruit;
+	protected static RecruitDTO recruit;
+	protected static RecruitAttachmentDTO recrAttachment;
 
 	private static RequestSpecification request;
 
@@ -96,18 +100,33 @@ public class BaseApiTest {
 		return response;
 	}
 	
-	public static Response createNewRecruit(RecruitDTO recruit) {
+	public static Response getCandidate(int id) {
+		Response response = given()
+				.header("Content-Type", "application/json")
+				.cookies(cookies)
+				.get("/web/index.php/api/v2/recruitment/candidates/" + id);
+		
+		if(response.getStatusCode() != 200) {
+			System.out.println("Failed to fetch candidate");
+			System.out.println(response.asPrettyString());
+		}
+		
+		getAllDataFromRecruitJsonResponse(response);
+		return response;
+	}
+		
+	public static Response createNewRecruit(RecruitDTO recr) {
 		String payload = "{\r\n"
-				+ "    \"firstName\": \"" + recruit.getFirstName() + "\",\r\n"
-				+ "    \"middleName\": \"" + recruit.getMiddleName() + "\",\r\n"
-				+ "    \"lastName\": \"" + recruit.getLastName() + "\",\r\n"
-				+ "    \"vacancyId\": " + recruit.getVacancyId() + ",\r\n"
-				+ "    \"email\": \"" + recruit.getEmail() + "\",\r\n"
-				+ "    \"contactNumber\": \"" + recruit.getContactNumber() + "\",\r\n"
-				+ "    \"keywords\": \"" + recruit.getKeywords() + "\",\r\n"
-				+ "    \"dateOfApplication\": \"" + recruit.getDateOfApplication() + "\",\r\n"
-				+ "    \"comment\": \"" + recruit.getComment() + "\",\r\n"
-				+ "    \"consentToKeepData\": " + recruit.isConsentToKeepData() + "\r\n"
+				+ "    \"firstName\": \"" + recr.getFirstName() + "\",\r\n"
+				+ "    \"middleName\": \"" + recr.getMiddleName() + "\",\r\n"
+				+ "    \"lastName\": \"" + recr.getLastName() + "\",\r\n"
+				+ "    \"vacancyId\": " + recr.getVacancy().getId() + ",\r\n"
+				+ "    \"email\": \"" + recr.getEmail() + "\",\r\n"
+				+ "    \"contactNumber\": \"" + recr.getContactNumber() + "\",\r\n"
+				+ "    \"keywords\": \"" + recr.getKeywords() + "\",\r\n"
+				+ "    \"dateOfApplication\": \"" + recr.getDateOfApplication() + "\",\r\n"
+				+ "    \"comment\": \"" + recr.getComment() + "\",\r\n"
+				+ "    \"consentToKeepData\": " + recr.isConsentToKeepData() + "\r\n"
 				+ "}";
 		
 		Response response = given()
@@ -121,7 +140,35 @@ public class BaseApiTest {
 			System.out.println(response.asPrettyString());
 		}
 		
-		recruit.setId(Integer.parseInt(getDataFromRecruitJsonResponse(response, "id")));
+		recr.setId(Integer.parseInt(getSpecificDataFromRecruitJsonResponse(response, "id")));
+		return response;
+	}
+	
+	public static Response updateRecruit(RecruitDTO recr) {
+		String payload = "{\r\n"
+				+ "    \"firstName\": \"" + recr.getFirstName() + "\",\r\n"
+				+ "    \"middleName\": \"" + recr.getMiddleName() + "\",\r\n"
+				+ "    \"lastName\": \"" + recr.getLastName() + "\",\r\n"
+				+ "    \"vacancyId\": " + recr.getVacancy().getId() + ",\r\n"
+				+ "    \"email\": \"" + recr.getEmail() + "\",\r\n"
+				+ "    \"contactNumber\": \"" + recr.getContactNumber() + "\",\r\n"
+				+ "    \"keywords\": \"" + recr.getKeywords() + "\",\r\n"
+				+ "    \"dateOfApplication\": \"" + recr.getDateOfApplication() + "\",\r\n"
+				+ "    \"comment\": \"" + recr.getComment() + "\",\r\n"
+				+ "    \"consentToKeepData\": " + recr.isConsentToKeepData() + "\r\n"
+				+ "}";
+		
+		Response response = given()
+				.header("Content-Type", "application/json")
+				.cookies(cookies)
+				.body(payload)
+				.put("/web/index.php/api/v2/recruitment/candidates/" + recr.getId());
+		
+		if(response.getStatusCode() != 200) {
+			System.out.println("Failed to update recruit");
+			System.out.println(response.asPrettyString());
+		}
+		
 		return response;
 	}
 	
@@ -144,12 +191,10 @@ public class BaseApiTest {
 				.post("/web/index.php/api/v2/recruitment/candidate/attachments");
 
 		if(response.getStatusCode() != 200) {
-			System.out.println("Failed to create new candidate");
+			System.out.println("Failed to attach resume");
 			System.out.println(response.asPrettyString());
-			recruit.setConsentToKeepData(false);
 		}
-		
-		recruit.setConsentToKeepData(true);
+		getAllDataFromRecruitAttachmentJsonResponse(response);
 		return response;
 	}
 	
@@ -166,7 +211,7 @@ public class BaseApiTest {
         }
 	}
 
-	protected static String getDataFromRecruitJsonResponse(Response response, String value) {
+	protected static String getSpecificDataFromRecruitJsonResponse(Response response, String value) {
 		ObjectMapper obj = new ObjectMapper();
 		String extractedValue = "";
 		try {
@@ -178,7 +223,44 @@ public class BaseApiTest {
 		}
 		return extractedValue;
 	}
-	
+
+	protected static void getAllDataFromRecruitJsonResponse(Response response) {
+		ObjectMapper obj = new ObjectMapper();
+		try {
+			JsonNode data = obj.readTree(response.asPrettyString());
+			JsonNode dataNode = data.get("data");
+			recruit = obj.treeToValue(dataNode, RecruitDTO.class);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	protected static String getSpecificDataFromRecruitAttachmentJsonResponse(Response response, String value) {
+		ObjectMapper obj = new ObjectMapper();
+		String extractedValue = "";
+		try {
+			JsonNode data = obj.readTree(response.asPrettyString());
+			JsonNode dataNode = data.get("data");
+			JsonNode attachmentNode = dataNode.get("attachment");
+			extractedValue = attachmentNode.get(value).asText();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return extractedValue;
+	}
+
+	protected static void getAllDataFromRecruitAttachmentJsonResponse(Response response) {
+		ObjectMapper obj = new ObjectMapper();
+		try {
+			JsonNode data = obj.readTree(response.asPrettyString());
+			JsonNode dataNode = data.get("data");
+			recrAttachment = obj.treeToValue(dataNode, RecruitAttachmentDTO.class);
+			System.out.println(dataNode);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	private static String extractTokenFromHtml(String response) {
 		Document doc = Jsoup.parse(response);
 		Element token = doc.selectFirst("auth-login");
@@ -186,16 +268,18 @@ public class BaseApiTest {
 	}
 
 	protected static RecruitDTO initRecruit() {
-		recruit = new RecruitDTO("Petar", 
-								"Pera", 
-								"Petrovic", 
-								6, 
-								"pe.pe@example.com", 
-								"+0111222333", 
-								"one two three", 
-								"2024-05-16", 
-								"Lorem Ipsom Dolomet", 
-								true);
-		return recruit;
+		return new RecruitDTO("Petar", 
+				"Pera", 
+				"Petrovic", 
+				"pe.pe@example.com", 
+				"+111222333444", 
+				"Lorem Ipsom Dolomet", 
+				"one two three", 
+				1,
+				"2024-05-16", 
+				new VacancyDTO(6),
+				new StatusDTO(),
+				false,
+				true);
 	}
 }

@@ -3,14 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ui.tests.RecruitmentTest">
+      <class name="api.tests.RecruitmentApiTest">
         <methods>
-          <include name="verifyEditingCandidate"/>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="lounchApplication"/>
+          <include name="tearDown"/>
+          <include name="TestAPIverifyAddingAttachmentToNewRecruit"/>
+          <include name="TestAPIverifyUpdateingNewCandidate"/>
+          <include name="setLocal"/>
         </methods>
-      </class> <!-- ui.tests.RecruitmentTest -->
+      </class> <!-- api.tests.RecruitmentApiTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
