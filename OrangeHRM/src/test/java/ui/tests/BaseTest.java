@@ -3,9 +3,9 @@ package ui.tests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import config.CandidateFile;
 import config.PropertiesFile;
 import pages.BasePage;
 
@@ -14,8 +14,6 @@ public class BaseTest {
 	private WebDriver webDriver;
 	private ChromeOptions option;
 	protected BasePage basePage;
-
-	private final String loginUrl = PropertiesFile.getLoginUrl();
 
 	@BeforeMethod
 	public void lounchApplication() {
@@ -36,7 +34,7 @@ public class BaseTest {
 		webDriver.manage().deleteAllCookies();
 		webDriver.manage().deleteCookieNamed("sessionKey");
 		webDriver.manage().window().maximize();
-		webDriver.get(loginUrl);
+		webDriver.get(PropertiesFile.getLoginUrl());
 
 	}
 
@@ -59,7 +57,6 @@ public class BaseTest {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

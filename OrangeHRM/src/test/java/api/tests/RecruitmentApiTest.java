@@ -6,6 +6,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import config.CandidateFile;
 import dtos.RecruitDTO;
 import io.restassured.response.Response;
 
@@ -42,7 +43,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 
 	@Test(priority = 0, description = "Precondition: TestAPIverifyAddingNewCandidate() executed. Adding attachment is on different endpoint")
 	public void TestAPIverifyAddingAttachmentToNewRecruit() {
-		Response response = addAttachmentToNewRecruit(initRecruit.getId());  //initRecruit.getId()
+		Response response = addAttachmentToNewRecruit(Integer.parseInt(CandidateFile.getApiid()));  //initRecruit.getId()
 		sa.assertEquals(response.getStatusCode(), 200);
 		sa.assertEquals(getSpecificDataFromRecruitJsonResponse(response, "candidateId"), recrAttachment.getCandidateId());
 		sa.assertEquals(getSpecificDataFromRecruitAttachmentJsonResponse(response, "fileName"), recrAttachment.getAttachment().getFileName());

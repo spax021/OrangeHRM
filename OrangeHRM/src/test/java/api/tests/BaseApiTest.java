@@ -14,6 +14,7 @@ import org.jsoup.nodes.Element;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import config.CandidateFile;
 import config.PropertiesFile;
 import dtos.RecruitAttachmentDTO;
 import dtos.RecruitDTO;
@@ -27,8 +28,6 @@ import io.restassured.specification.RequestSpecification;
 public class BaseApiTest {
 
 	private static String token;
-	private static String username = PropertiesFile.getUsername();
-	private static String password = PropertiesFile.getPassword();
 	
 	private static String base64String = "";
 	private static long fileSize = 0;
@@ -38,11 +37,9 @@ public class BaseApiTest {
 	protected static RecruitAttachmentDTO recrAttachment;
 
 	private static RequestSpecification request;
-
+	
 	public BaseApiTest() {
 		this.token = "";
-		this.username = PropertiesFile.getUsername();
-		this.password = PropertiesFile.getPassword();
 	}
 
 	private static void startProcess() {
@@ -70,8 +67,8 @@ public class BaseApiTest {
 		Response response = given()
 							.cookies(cookies)
 							.formParam("_token", token)
-							.formParam("username", username)
-							.formParam("password", password)
+							.formParam("username", PropertiesFile.getUsername())
+							.formParam("password", PropertiesFile.getPassword())
 							.post("/web/index.php/auth/validate");
 		
 		cookies = response.getDetailedCookies();	//new cookie is saved
@@ -81,7 +78,11 @@ public class BaseApiTest {
 		}
 		return response;
 	}
-	
+	/**
+	 * Due to frequent changes in localization settings on the site by other users, 
+	 * this method reliably sets the date format to the one required for the existing tests. 
+	 * Otherwise, the TestVerifyAddingNewCandidate test would fail in most cases due to date format issues.
+	 */
 	public static Response setLocalisation() {
 		login();
 		String payload = "{ \"language\": \"en_US\", \"dateFormat\": \"d-m-Y\" }";
@@ -96,7 +97,7 @@ public class BaseApiTest {
 			System.out.println("Failed to set localisation");
 			System.out.println(response.asPrettyString());
 		}
-		
+		System.out.println("Localisation is executed");
 		return response;
 	}
 	
@@ -141,6 +142,7 @@ public class BaseApiTest {
 		}
 		
 		recr.setId(Integer.parseInt(getSpecificDataFromRecruitJsonResponse(response, "id")));
+		CandidateFile.setApiId(getSpecificDataFromRecruitJsonResponse(response, "id"));
 		return response;
 	}
 	
@@ -200,7 +202,7 @@ public class BaseApiTest {
 	
 	private static void encodePdfFile() {
         try {
-            File pdfFile = new File(".\\docs\\mock-cv.pdf");
+            File pdfFile = new File(CandidateFile.getApiResume());
             byte[] fileContent = FileUtils.readFileToByteArray(pdfFile);
 
             base64String = Base64.getEncoder().encodeToString(fileContent);
@@ -255,7 +257,6 @@ public class BaseApiTest {
 			JsonNode data = obj.readTree(response.asPrettyString());
 			JsonNode dataNode = data.get("data");
 			recrAttachment = obj.treeToValue(dataNode, RecruitAttachmentDTO.class);
-			System.out.println(dataNode);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -268,18 +269,15 @@ public class BaseApiTest {
 	}
 
 	protected static RecruitDTO initRecruit() {
-		return new RecruitDTO("Petar", 
-				"Pera", 
-				"Petrovic", 
-				"pe.pe@example.com", 
-				"+111222333444", 
-				"Lorem Ipsom Dolomet", 
-				"one two three", 
-				1,
-				"2024-05-16", 
-				new VacancyDTO(6),
-				new StatusDTO(),
-				false,
+		return new RecruitDTO(CandidateFile.getApiFirstname(), 
+				CandidateFile.getApiMiddlename(), 
+				CandidateFile.getApiLastname(), 
+				CandidateFile.getApiEmail(), 
+				CandidateFile.getApiContactNumber(), 
+				CandidateFile.getApiNotes(), 
+				CandidateFile.getApiKeywords(), 
+				CandidateFile.getApiDateOfApplication(), 
+				new VacancyDTO(Integer.parseInt(CandidateFile.getApiVacancyId())),
 				true);
 	}
 }

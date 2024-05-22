@@ -38,9 +38,26 @@ public class RecruitDTO {
 	}
 
 	public RecruitDTO(String firstName, String middleName, String lastName, String email, String contactNumber,
+			String comment, String keywords, String dateOfApplication, VacancyDTO vacancy,
+			boolean consentToKeepData) {
+		super();
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.email = email;
+		this.contactNumber = contactNumber;
+		this.comment = comment;
+		this.keywords = keywords;
+		this.dateOfApplication = dateOfApplication;
+		this.vacancy = vacancy;
+		this.consentToKeepData = consentToKeepData;
+	}
+
+	public RecruitDTO(int id, String firstName, String middleName, String lastName, String email, String contactNumber,
 			String comment, String keywords, int modeOfApplication, String dateOfApplication, VacancyDTO vacancy,
 			StatusDTO status, boolean hasAttachment, boolean consentToKeepData) {
 		super();
+		this.id = id;
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;

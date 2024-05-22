@@ -6,122 +6,63 @@ import java.util.Properties;
 
 public class PropertiesFile {
 
-	private static String fileLocation = ".\\src\\test\\resources\\application.properties";
-	private static Properties prop;
+    private static String fileLocation = ".\\src\\test\\resources\\application.properties";
+    private static Properties prop;
 
-	public static void readPropertiesFile() {
-		prop = new Properties();
-		try {
-			InputStream input = new FileInputStream(fileLocation);
-			prop.load(input);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public static String getLoginUrl() {
-		readPropertiesFile();
-		return prop.getProperty("loginUrl");
-	}
-	
-	public static String getBaseUrl() {
-		readPropertiesFile();
-		return prop.getProperty("baseUrl");
-	}
-	
-	public static String getUsername() {
-		readPropertiesFile();
-		return prop.getProperty("username");
-	}
-	
-	public static String getPassword() {
-		readPropertiesFile();
-		return prop.getProperty("password");
-	}
-	
-	public static String getInvalidUsername() {
-		readPropertiesFile();
-		return prop.getProperty("invalidUsername");
-	}
-	
-	public static String getInvalidPassword() {
-		readPropertiesFile();
-		return prop.getProperty("invalidPassword");
-	}
+    private PropertiesFile() {
+    }
 
-	public static String getLoginPageUrl() {
-		readPropertiesFile();
-		return prop.getProperty("loginPageUrl");
-	}
+    private static class PropertiesFileHolder {
+        private static final Properties INSTANCE = loadProperties();
+    }
 
-	public static String getRecruitmentPageUrl() {
-		readPropertiesFile();
-		return prop.getProperty("recruitmentPageUrl");
-	}
+    private static Properties loadProperties() {
+        Properties properties = new Properties();
+        try (InputStream input = new FileInputStream(fileLocation)) {
+            properties.load(input);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
 
-	public static String getRecruitmentAddNewCandidatePageUrl() {
-		readPropertiesFile();
-		return prop.getProperty("recruitmentAddNewCandidatePageUrl");
-	}
-	
-	public static String getFirstname() {
-		readPropertiesFile();
-		return prop.getProperty("firstname");
-	}
-	
-	public static String getMiddlename() {
-		readPropertiesFile();
-		return prop.getProperty("middlename");
-	}
+    public static Properties getInstance() {
+        return PropertiesFileHolder.INSTANCE;
+    }
 
-	public static String getLastname() {
-		readPropertiesFile();
-		return prop.getProperty("lastname");
-	}
+    public static String getLoginUrl() {
+        return getInstance().getProperty("loginUrl");
+    }
 
-	public static String getVacancy() {
-		readPropertiesFile();
-		return prop.getProperty("vacancy");
-	}
+    public static String getBaseUrl() {
+        return getInstance().getProperty("baseUrl");
+    }
 
-	public static String getEmail() {
-		readPropertiesFile();
-		return prop.getProperty("email");
-	}
+    public static String getUsername() {
+        return getInstance().getProperty("username");
+    }
 
-	public static String getContactNumber() {
-		readPropertiesFile();
-		return prop.getProperty("contactNumber");
-	}
+    public static String getPassword() {
+        return getInstance().getProperty("password");
+    }
 
-	public static String getResume() {
-		readPropertiesFile();
-		return prop.getProperty("resume");
-	}
+    public static String getInvalidUsername() {
+        return getInstance().getProperty("invalidUsername");
+    }
 
-	public static String getKeywords() {
-		readPropertiesFile();
-		return prop.getProperty("keyWords");
-	}
+    public static String getInvalidPassword() {
+        return getInstance().getProperty("invalidPassword");
+    }
 
-	public static String getDate() {
-		readPropertiesFile();
-		return prop.getProperty("date");
-	}
+    public static String getLoginPageUrl() {
+        return getInstance().getProperty("loginPageUrl");
+    }
 
-	public static String getNotes() {
-		readPropertiesFile();
-		return prop.getProperty("notes");
-	}
+    public static String getRecruitmentPageUrl() {
+        return getInstance().getProperty("recruitmentPageUrl");
+    }
 
-	public static String getConsent() {
-		readPropertiesFile();
-		return prop.getProperty("consent");
-	}
-
-	public static String getCandidateStatus() {
-		readPropertiesFile();
-		return prop.getProperty("candidateStatus");
-	}
-
+    public static String getRecruitmentAddNewCandidatePageUrl() {
+        return getInstance().getProperty("recruitmentAddNewCandidatePageUrl");
+    }
 }

@@ -17,7 +17,6 @@ public class RecruitmentTest extends BaseTest {
 	@BeforeClass
 	public void setLocal() {
 		BaseApiTest.setLocalisation();
-		System.out.println("This is executed");
 	}
 	
 	@BeforeMethod(alwaysRun = true)

@@ -6,9 +6,8 @@
       <class name="api.tests.RecruitmentApiTest">
         <methods>
           <include name="setUp"/>
+          <include name="TestAPIverifyAddingNewCandidate"/>
           <include name="tearDown"/>
-          <include name="TestAPIverifyAddingAttachmentToNewRecruit"/>
-          <include name="TestAPIverifyUpdateingNewCandidate"/>
           <include name="setLocal"/>
         </methods>
       </class> <!-- api.tests.RecruitmentApiTest -->

@@ -7,6 +7,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import config.CandidateFile;
 import config.PropertiesFile;
 import elements.RecruitmentPageElements;
 
@@ -43,17 +44,17 @@ public class RecruitmentPage extends BasePage{
 	public void populateNewCandidateFields() {
 		waitForElementClickable(recruitmentPageElements.getFirstName());
 		driver.findElement(recruitmentPageElements.getFirstName()).clear();
-		driver.findElement(recruitmentPageElements.getFirstName()).sendKeys(PropertiesFile.getFirstname());
-		driver.findElement(recruitmentPageElements.getMiddleName()).sendKeys(PropertiesFile.getMiddlename());
-		driver.findElement(recruitmentPageElements.getLastName()).sendKeys(PropertiesFile.getLastname());
+		driver.findElement(recruitmentPageElements.getFirstName()).sendKeys(CandidateFile.getFirstname());
+		driver.findElement(recruitmentPageElements.getMiddleName()).sendKeys(CandidateFile.getMiddlename());
+		driver.findElement(recruitmentPageElements.getLastName()).sendKeys(CandidateFile.getLastname());
 		driver.findElement(recruitmentPageElements.getVacancy()).click();
-		driver.findElement(recruitmentPageElements.getVacancyOptions(PropertiesFile.getVacancy())).click();
-		driver.findElement(recruitmentPageElements.getEmail()).sendKeys(PropertiesFile.getEmail());
-		driver.findElement(recruitmentPageElements.getContactNumber()).sendKeys(PropertiesFile.getContactNumber());
-		driver.findElement(recruitmentPageElements.getResume()).sendKeys(getAbsolutePath(PropertiesFile.getResume()));
-		driver.findElement(recruitmentPageElements.getKeyWords()).sendKeys(PropertiesFile.getKeywords());;
-		driver.findElement(recruitmentPageElements.getDateOfApplication()).sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), PropertiesFile.getDate());;
-		driver.findElement(recruitmentPageElements.getNotes()).sendKeys(PropertiesFile.getNotes());;
+		driver.findElement(recruitmentPageElements.getVacancyOptions(CandidateFile.getVacancy())).click();
+		driver.findElement(recruitmentPageElements.getEmail()).sendKeys(CandidateFile.getEmail());
+		driver.findElement(recruitmentPageElements.getContactNumber()).sendKeys(CandidateFile.getContactNumber());
+		driver.findElement(recruitmentPageElements.getResume()).sendKeys(getAbsolutePath(CandidateFile.getResume()));
+		driver.findElement(recruitmentPageElements.getKeyWords()).sendKeys(CandidateFile.getKeywords());;
+		driver.findElement(recruitmentPageElements.getDateOfApplication()).sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), CandidateFile.getDate());;
+		driver.findElement(recruitmentPageElements.getNotes()).sendKeys(CandidateFile.getNotes());;
 		driver.findElement(recruitmentPageElements.getConsentCheckbox()).click();;
 	}
 	
@@ -65,7 +66,7 @@ public class RecruitmentPage extends BasePage{
 		driver.findElement(recruitmentPageElements.getSaveButton()).click();
 	}
 	
-	private String fullName = PropertiesFile.getFirstname() + " " + PropertiesFile.getMiddlename() + " " + PropertiesFile.getLastname(); 
+	private String fullName = CandidateFile.getFirstname() + " " + CandidateFile.getMiddlename() + " " + CandidateFile.getLastname(); 
 	
 	public void verifyNewCandidateIsCreated() {
 		waitForElementVisible(recruitmentPageElements.getRejectButton());
@@ -75,7 +76,7 @@ public class RecruitmentPage extends BasePage{
 	public void enterCandidateFirstname() {
 		waitForElementVisible(recruitmentPageElements.getSearchCandidateName());
 		driver.findElement(recruitmentPageElements.getSearchCandidateName()).click();
-		driver.findElement(recruitmentPageElements.getSearchCandidateName()).sendKeys(PropertiesFile.getFirstname());
+		driver.findElement(recruitmentPageElements.getSearchCandidateName()).sendKeys(CandidateFile.getFirstname());
 	}
 
 	public void choseCandidateFromList() {
@@ -109,9 +110,9 @@ public class RecruitmentPage extends BasePage{
 		driver.findElement(recruitmentPageElements.getCandidateEditButton()).click();
 	}
 	
-	private String editedFirstname = "Edit" + PropertiesFile.getFirstname();
-	private String editedLastname = "Edit" + PropertiesFile.getLastname();
-	private String editedFullName = editedFirstname + " " + PropertiesFile.getMiddlename() + " " + editedLastname; 
+	private String editedFirstname = "Edit" + CandidateFile.getFirstname();
+	private String editedLastname = "Edit" + CandidateFile.getLastname();
+	private String editedFullName = editedFirstname + " " + CandidateFile.getMiddlename() + " " + editedLastname; 
 	
 	/** custom JavaScript on the page is interfering with the input field therefore .clear() method is not working
 	 * custom method had to be created which is simulating CONTROL + a, then DELETE
