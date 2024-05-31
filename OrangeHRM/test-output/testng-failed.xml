@@ -5,8 +5,8 @@
     <classes>
       <class name="api.tests.RecruitmentApiTest">
         <methods>
+          <include name="E2E"/>
           <include name="setUp"/>
-          <include name="TestAPIverifyAddingNewCandidate"/>
           <include name="tearDown"/>
           <include name="setLocal"/>
         </methods>

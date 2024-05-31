@@ -2,7 +2,7 @@ package dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RecruitDTO {
+public class CandidateDTO {
 
 	@JsonProperty("id")
     private int id;
@@ -33,11 +33,11 @@ public class RecruitDTO {
     @JsonProperty("consentToKeepData")
     private boolean consentToKeepData;
 
-	public RecruitDTO() {
+	public CandidateDTO() {
 		super();
 	}
 
-	public RecruitDTO(String firstName, String middleName, String lastName, String email, String contactNumber,
+	public CandidateDTO(String firstName, String middleName, String lastName, String email, String contactNumber,
 			String comment, String keywords, String dateOfApplication, VacancyDTO vacancy,
 			boolean consentToKeepData) {
 		super();
@@ -53,7 +53,7 @@ public class RecruitDTO {
 		this.consentToKeepData = consentToKeepData;
 	}
 
-	public RecruitDTO(int id, String firstName, String middleName, String lastName, String email, String contactNumber,
+	public CandidateDTO(int id, String firstName, String middleName, String lastName, String email, String contactNumber,
 			String comment, String keywords, int modeOfApplication, String dateOfApplication, VacancyDTO vacancy,
 			StatusDTO status, boolean hasAttachment, boolean consentToKeepData) {
 		super();

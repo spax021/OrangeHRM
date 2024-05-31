@@ -93,3 +93,4 @@ The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for 
 
 1. **TestAPIverifyAddingNewCandidate**: Verify that Admin can add a new candidate via API.
 2. **TestAPIverifyAddingAttachmentToNewRecruit**: Verify that an attachment can be added to a new recruit via API.
+3. **TestAPIverifyUpdateingNewCandidate**: Verify that Admin can update existing candidate via API.

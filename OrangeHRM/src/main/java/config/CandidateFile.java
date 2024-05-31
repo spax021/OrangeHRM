@@ -137,6 +137,10 @@ public class CandidateFile {
         return getInstance().get("APIresume");
     }
 
+    public static String getApiAvatar() {
+        return getInstance().get("APIavatar");
+    }
+
     public static String getApiKeywords() {
         return getInstance().get("APIkeyWords");
     }

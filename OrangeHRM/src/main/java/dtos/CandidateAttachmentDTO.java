@@ -2,7 +2,7 @@ package dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RecruitAttachmentDTO {
+public class CandidateAttachmentDTO {
 
 	@JsonProperty("id")
 	private String id;
@@ -11,11 +11,11 @@ public class RecruitAttachmentDTO {
 	@JsonProperty("attachment")
 	private AttachmentDTO attachment;
 
-	public RecruitAttachmentDTO() {
+	public CandidateAttachmentDTO() {
 		super();
 	}
 
-	public RecruitAttachmentDTO(String id, String candidateId, AttachmentDTO attachment) {
+	public CandidateAttachmentDTO(String id, String candidateId, AttachmentDTO attachment) {
 		super();
 		this.id = id;
 		this.candidateId = candidateId;
