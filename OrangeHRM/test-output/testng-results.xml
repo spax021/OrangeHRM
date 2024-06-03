@@ -2,24 +2,24 @@
 <testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-31T15:21:55 CEST" name="Default suite" finished-at="2024-05-31T15:22:02 CEST" duration-ms="6351">
+  <suite started-at="2024-06-03T16:07:59 CEST" name="Default suite" finished-at="2024-06-03T16:08:06 CEST" duration-ms="7325">
     <groups>
     </groups>
-    <test started-at="2024-05-31T15:21:55 CEST" name="Default test" finished-at="2024-05-31T15:22:02 CEST" duration-ms="6351">
+    <test started-at="2024-06-03T16:07:59 CEST" name="Default test" finished-at="2024-06-03T16:08:06 CEST" duration-ms="7325">
       <class name="api.tests.EmployeeApiTest">
-        <test-method is-config="true" signature="setLocal()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-05-31T15:21:55 CEST" name="setLocal" finished-at="2024-05-31T15:22:01 CEST" duration-ms="5676" status="PASS">
+        <test-method is-config="true" signature="setLocal()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-06-03T16:07:59 CEST" name="setLocal" finished-at="2024-06-03T16:08:05 CEST" duration-ms="5802" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setLocal -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-05-31T15:22:01 CEST" name="setUp" finished-at="2024-05-31T15:22:01 CEST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-06-03T16:08:05 CEST" name="setUp" finished-at="2024-06-03T16:08:05 CEST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="TestAPIverifyActivatingNewEmployee()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-05-31T15:22:01 CEST" name="TestAPIverifyActivatingNewEmployee" description="Verify that Admin can activate and add username and password to the new employee" finished-at="2024-05-31T15:22:01 CEST" duration-ms="603" status="PASS">
+        <test-method signature="TestAPIverifyActivatingNewEmployee()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-06-03T16:08:05 CEST" name="TestAPIverifyActivatingNewEmployee" description="Verify that Admin can activate and add username and password to the new employee" finished-at="2024-06-03T16:08:06 CEST" duration-ms="1458" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TestAPIverifyActivatingNewEmployee -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-05-31T15:22:01 CEST" name="tearDown" finished-at="2024-05-31T15:22:01 CEST" duration-ms="6" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:api.tests.EmployeeApiTest@6892b3b6]" started-at="2024-06-03T16:08:06 CEST" name="tearDown" finished-at="2024-06-03T16:08:06 CEST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

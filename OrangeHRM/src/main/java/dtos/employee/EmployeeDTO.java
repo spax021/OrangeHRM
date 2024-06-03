@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class EmployeeDTO {
 
 	@JsonProperty("empNumber")
-	private int empNumber;
+	private String empNumber;
 	@JsonProperty("employeeId")
 	private String employeeId;
 	@JsonProperty("firstName")
@@ -16,13 +16,37 @@ public class EmployeeDTO {
 	private String lastName;
 	@JsonProperty("terminationId")
 	private Integer terminationId;
+	@JsonProperty("otherId")
+	private String otherId;
+	@JsonProperty("driverLicenceNo")
+	private String driverLicenceNo;
+	@JsonProperty("driverLicenceExpiredDate")
+	private String driverLicenceExpiredDate;
+	@JsonProperty("gender")
+	private String gender;
+	@JsonProperty("maritalStatus")
+	private String maritalStatus;
+	@JsonProperty("birthday")
+	private String birthday;
+	@JsonProperty("nationality")
+	private NationalityDTO nationality;
 
 	public EmployeeDTO() {
 		super();
 	}
+	
 
-	public EmployeeDTO(int empNumber, String employeeId, String firstName, String middleName, String lastName,
-			Integer terminationId) {
+	public EmployeeDTO(String empNumber, String firstName, String middleName, String lastName) {
+		super();
+		this.empNumber = empNumber;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+	}
+
+	public EmployeeDTO(String empNumber, String employeeId, String firstName, String middleName, String lastName,
+			Integer terminationId, String otherId, String driverLicenceNo, String driverLicenceExpiredDate,
+			String gender, String maritalStatus, String birthday, NationalityDTO nationality) {
 		super();
 		this.empNumber = empNumber;
 		this.employeeId = employeeId;
@@ -30,9 +54,16 @@ public class EmployeeDTO {
 		this.middleName = middleName;
 		this.lastName = lastName;
 		this.terminationId = terminationId;
+		this.otherId = otherId;
+		this.driverLicenceNo = driverLicenceNo;
+		this.driverLicenceExpiredDate = driverLicenceExpiredDate;
+		this.gender = gender;
+		this.maritalStatus = maritalStatus;
+		this.birthday = birthday;
+		this.nationality = nationality;
 	}
 
-	public int getEmpNumber() {
+	public String getEmpNumber() {
 		return empNumber;
 	}
 
@@ -56,7 +87,35 @@ public class EmployeeDTO {
 		return terminationId;
 	}
 
-	public void setEmpNumber(int empNumber) {
+	public String getOtherId() {
+		return otherId;
+	}
+
+	public String getDriverLicenceNo() {
+		return driverLicenceNo;
+	}
+
+	public String getDriverLicenceExpiredDate() {
+		return driverLicenceExpiredDate;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public String getMaritalStatus() {
+		return maritalStatus;
+	}
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public NationalityDTO getNationality() {
+		return nationality;
+	}
+
+	public void setEmpNumber(String empNumber) {
 		this.empNumber = empNumber;
 	}
 
@@ -78,6 +137,34 @@ public class EmployeeDTO {
 
 	public void setTerminationId(Integer terminationId) {
 		this.terminationId = terminationId;
+	}
+
+	public void setOtherId(String otherId) {
+		this.otherId = otherId;
+	}
+
+	public void setDriverLicenceNo(String driverLicenceNo) {
+		this.driverLicenceNo = driverLicenceNo;
+	}
+
+	public void setDriverLicenceExpiredDate(String driverLicenceExpiredDate) {
+		this.driverLicenceExpiredDate = driverLicenceExpiredDate;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public void setNationality(NationalityDTO nationality) {
+		this.nationality = nationality;
 	}
 
 }
