@@ -1,2 +1,2 @@
-C:\Users\Spaskici\git\repository\OrangeHRM\src\test\resources\application.properties
-C:\Users\Spaskici\git\repository\OrangeHRM\src\test\resources\employee.properties
+# Ignore all properties files
+OrangeHRM/src/test/resources/
