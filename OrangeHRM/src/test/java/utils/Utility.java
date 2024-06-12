@@ -4,13 +4,24 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import config.CandidateFile;
+import config.EmployeeFile;
+import dtos.CandidateDTO;
+import dtos.VacancyDTO;
+import dtos.employee.EmployeeDTO;
 import io.restassured.response.Response;
 
 public class Utility {
@@ -75,7 +86,7 @@ public class Utility {
 	}
 	
 	/**
-	 * Method is incrementing employee ID by 1 if provided al ready exist
+	 * Method is incrementing employee ID by 1 if provided already exist
 	 * @param employee id
 	 */
 	protected static String incrementEmployeeId(String id) {
@@ -147,7 +158,48 @@ public class Utility {
 		}
 		return extractedValue;
 	}
+	
+	/**
+	 * In case of an error, insted of DATA we will have ERROR as first level node
+	 * @param response
+	 * @param first node
+	 * @param second node
+	 * @param third node
+	 * @param fourth node
+	 * @return
+	 * Extracted values from fourth node level
+	 */	
+	protected static String getDataFromJson(Response response, String parent, String childOne, String childTwo, String childThree) {
+		String childTwoJson = getDataFromJson(response, parent, childOne, childTwo);
+		ObjectMapper obj = new ObjectMapper();
+		String extractedValue = null;
+		try {
+			JsonNode childTwoNode = obj.readTree(childTwoJson);
+			JsonNode childThreeNode = childTwoNode.get(childThree);
+			extractedValue = childThreeNode.toString().replaceAll("^\"|\"$", "");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return extractedValue;
+	}
 
+	/**
+	 * Method is forming an array of IDs in format known to requestbody
+	 * @params employeNumber
+	 */
+	protected static String formArrayOfIdsForPayload(int[] ids) {
+		ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> map = new HashMap<>();
+        map.put("ids", ids);
+        String payload = null;
+        try {
+            payload = mapper.writeValueAsString(map);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+		return payload.substring(8, payload.length() - 2);
+	}
+	
 	protected static <T> T populateDTO(Response response, Class<T> dtoClass) {
 	        ObjectMapper obj = new ObjectMapper();
 	        T dtoObject = null;
@@ -160,4 +212,64 @@ public class Utility {
 	        }
 	        return dtoObject;
 	}
+
+	protected static <T> T populateDTO(Response response, String child, Class<T> dtoClass) {
+	        ObjectMapper obj = new ObjectMapper();
+	        T dtoObject = null;
+	        try {
+	            JsonNode data = obj.readTree(response.asPrettyString());
+	            JsonNode dataNode = data.get("data");
+	            JsonNode childNode = dataNode.get(child);
+	            dtoObject = obj.treeToValue(childNode, dtoClass);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return dtoObject;
+	}
+	
+	protected static String extractTokenFromHtml(String response) {
+		Document doc = Jsoup.parse(response);
+		Element token = doc.selectFirst("auth-login");
+		return token.attr("token"); //.replace("\"", "");
+	}
+	
+	protected List<String> getinterviewIdsFromJson(Response response, String parent, String child, String value) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<String> empNumbers = new ArrayList<>();
+		try {
+			JsonNode rootNode = objectMapper.readTree(response.asPrettyString());
+	        JsonNode interviewersNode = rootNode.path(parent).path(child);
+	        if(interviewersNode.isArray()) {
+	        	for (JsonNode interviewerNode : interviewersNode) {
+	        		String empNumber = interviewerNode.path(value).asText();
+	        		empNumbers.add(empNumber);
+	        	}
+	        }
+	    } catch (Exception e) {
+			e.printStackTrace();
+		}
+		return empNumbers;
+	}
+
+
+	protected static CandidateDTO initCandidate() {
+		return new CandidateDTO(CandidateFile.getApiFirstname(), 
+				CandidateFile.getApiMiddlename(), 
+				CandidateFile.getApiLastname(), 
+				CandidateFile.getApiEmail(), 
+				CandidateFile.getApiContactNumber(), 
+				CandidateFile.getApiNotes(), 
+				CandidateFile.getApiKeywords(), 
+				CandidateFile.getApiDateOfApplication(), 
+				new VacancyDTO(Integer.parseInt(CandidateFile.getApiVacancyId())),
+				true);
+	}
+	protected static EmployeeDTO initEmployee() {
+		return new EmployeeDTO(
+				Integer.parseInt(EmployeeFile.getAPIempNumber()),
+				EmployeeFile.getAPIfirstname(),
+				EmployeeFile.getAPImiddlename(),
+				EmployeeFile.getAPIlastnam());
+	}
+
 }

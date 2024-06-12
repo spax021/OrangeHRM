@@ -13,7 +13,7 @@ public class VacancyDTO {
     @JsonProperty("jobTitle")
     private JobTitleDTO jobTitle;
     @JsonProperty("hiringManager")
-	private String hiringManager;
+	private HiringManagerDTO hiringManager;
 
 	public VacancyDTO() {
 		super();
@@ -24,7 +24,7 @@ public class VacancyDTO {
 		this.id = id;
 	}
 
-	public VacancyDTO(int id, String name, boolean status, JobTitleDTO jobTitle, String hiringManager) {
+	public VacancyDTO(int id, String name, boolean status, JobTitleDTO jobTitle, HiringManagerDTO hiringManager) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,7 +49,7 @@ public class VacancyDTO {
 		return jobTitle;
 	}
 
-	public String getHiringManager() {
+	public HiringManagerDTO getHiringManager() {
 		return hiringManager;
 	}
 
@@ -69,7 +69,7 @@ public class VacancyDTO {
 		this.jobTitle = jobTitle;
 	}
 
-	public void setHiringManager(String hiringManager) {
+	public void setHiringManager(HiringManagerDTO hiringManager) {
 		this.hiringManager = hiringManager;
 	}
 

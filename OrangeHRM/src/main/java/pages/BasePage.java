@@ -20,7 +20,7 @@ public class BasePage {
 		
 	}
 	public void setWait(WebDriver driver) {
-		wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	public void waitForElementClickable(By element) {
