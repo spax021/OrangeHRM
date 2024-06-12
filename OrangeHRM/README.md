@@ -1,63 +1,37 @@
 # OrangeHRM
 
 Self practice automation project: Java/testNG/Selenium/Rest Assured<br>
-https://opensource-demo.orangehrmlive.com/web/index.php/auth/login
+https://opensource-demo.orangehrmlive.com/web/index.php/auth/login<br>
+
+WebDriverManager (Bony Garcia) for managing web drivers<br>
+TestNG for running tests and taking screen shots when test fail<br>
+Allure TBD<br>
+
+Using Hard Assert for UI<br>
+Using Soft Assert for API<br>
 
 ## Project Structure:
 
 ```
 OrangeHRM
 ├── src/main/java
-│ ├── config
-│ │ └── PropertiesFile.java
-│ ├── dtos
-│ │ └── RecruitDTO.java
-│ ├── elements
-│ │ ├── DashboardPageElements.java
-│ │ ├── LoginPageElements.java
-│ │ ├── PopupsElements.java
-│ │ └── RecruitmentPageElements.java
-│ ├── pages
-│ │ ├── BasePage.java
-│ │ ├── DashboardPage.java
-│ │ ├── LoginPage.java
-│ │ ├── Popups.java
-│ │ └── RecruitmentPage.java
+│ ├── config (used for reading values from properties files)
+│ ├── dtos (Data Transfer Objects)
+│ ├── elements (element locators on a page)
+│ ├── pages (pages)
 ├── src/main/resources
 ├── src/test/java
-│ ├── api.tests
-│ │ ├── BaseApiTest.java
-│ │ └── RecruitmentApiTest.java
-│ ├── uitests
-│ │ ├── BaseTest.java
-│ │ ├── DashboardTest.java
-│ │ ├── LoginTest.java
-│ │ └── RecruitmentTest.java
-├── src/test/resources
-│ └── application.properties
+│ ├── apiTests (API tests)
+│ ├── common (used for common functions ex: screenshot listeners)
+│ ├── uitests (UI test)
+│ ├── utils (user for util methods ex: CRUD operations)
+├── src/test/resources (resources folder)
 ```
-
-Each directory and file has a specific role in the project:
-
-- **src/main/java**: Contains the main source code.
-  - **config**: Configuration files and classes.
-  - **dtos**: Data Transfer Objects.
-  - **elements**: Page elements.
-  - **pages**: Page object classes.
-
-- **src/main/resources**: Contains resource files.
-
-- **src/test/java**: Contains test source code.
-  - **api.tests**: API test classes.
-  - **uitests**: UI test classes.
-
-- **src/test/resources**: Contains test resource files.
-  - **application.properties**: Configuration for tests.
-  
   
 ## BaseTest classes
 
-The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for all test classes in the project. It contains common setup, teardown, and utility methods that are used across multiple test classes. This approach helps in reducing code duplication and ensures consistency across the tests.
+The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for all test classes in the project. It contains common setup, teardown, and utility methods that are used across multiple test classes. This approach helps in reducing code duplication and ensures consistency across the tests.<br>
+**Plan for future: ** `BaseTest.java` and `BaseApiTest.java` will be moved to Base package and additional base classes will be created which will correspond to existing TEST classes.
 
 ## Key Responsibilities:
 
@@ -69,12 +43,12 @@ The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for 
 <p>   - Common utility methods that are used across multiple test classes. For example, methods to take screenshots, handle common web interactions, or validate conditions.</p>
 
 
-# Test Cases
+# UI Test Cases 
 
 ##### LoginTest.java
 
-1. **TestLoginInUser**: Verify that a user can log in to the system with valid credentials.
-2. **TestLoginInWithWrongCredentials**: Verify that a user cannot log in to the system with invalid credentials.
+1. **TestLoginUser**: Verify that a user can log in to the system with valid credentials.
+2. **TestLoginWithWrongCredentials**: Verify that a user cannot log in to the system with invalid credentials.
 
 ##### RecruitmentTest.java
 
@@ -89,8 +63,26 @@ The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for 
 3. **TestLogoutUser**: Verify that a user can log out from the system.
    - **Description**: This test navigates to the user dashboard, clicks the logout button, and verifies that the user is logged out successfully.
 
+# API Test Cases 
+
 ##### RecruitmentApiTest.java
 
-1. **TestAPIverifyAddingNewCandidate**: Verify that Admin can add a new candidate via API.
-2. **TestAPIverifyAddingAttachmentToNewRecruit**: Verify that an attachment can be added to a new recruit via API.
-3. **TestAPIverifyUpdateingNewCandidate**: Verify that Admin can update existing candidate via API.
+1. **TestAPIverifyAddingNewCandidate**: Verify that Admin can add new candidate.
+2. **TestAPIverifyAddingAttachmentToNewRecruit**: Adding attachment is on different endpoint.
+3. **TestAPIverifyGetingNewCandidate**: Verify existance of a new Candidate.
+4. **TestAPIverifyUpdateingNewCandidate**: Verify that admin can update new candidate.
+5. **TestAPIVerifyShortlistNewCandidate**: Verify that admin can shortlist new candidate.
+6. **TestAPIVerifyScheduleInterviewWithNewcandidate**: Verify that admin can schedule an interview with new candidate.
+7. **TestAPImarkAsPassedIntervview**: Verify that admin can mark interview as passed for new candidate.
+8. **TestAPIofferAJobToNewCandidate**: Verify that admin can offer a job to new candidate.
+9. **TestAPIhireNewCandidate**: Verify that admin can hire new candidate.
+10. **TestAPIverifyDeleteingExistingCandidate**: Verify that Admin can delete existing candidate.
+11. **E2E**: Create new candidate > go through whole process > Hire
+
+
+##### EmployeeApiTest.java
+
+1. **TestAPIverifyAddingNewEmployee**: Verify that Admin can add new employee.
+2. **TestAPIverifyActivatingNewEmployee**: Verify that Admin can activate new employee.
+3. **TestAPIverifyDeleteingExistingEmployee**: Verify that Admin can delete existing employee.
+4. **TestCreateAndActivateNewEmployee**: Verify that Admin can create and activate new employee.

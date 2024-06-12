@@ -41,7 +41,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "terminationId"), "null");
 	}
 	
-	@Test(priority = 0, description = "Precodndition: TestAPIverifyAddingNewEmployee() / Verify that Admin can activate and add username and password to the new employee")
+	@Test(priority = 0, description = "Verify that Admin can activate new employee")
 	public void TestAPIverifyActivatingNewEmployee() {
 		Response response = activateNewEmployee(employee.getEmpNumber());
 		sa.assertEquals(response.getStatusCode(), 200);
@@ -54,9 +54,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "userRole", "name"), userRole.getName());
 	}
 	
-	
-	
-//	@Test(priority = 10, description = "Precodndition: TestAPIverifyAddingNewEmployee() / Verify that Admin can delete existing employee")
+	@Test(priority = 10, description = " Verify that Admin can delete existing employee")
 	public void TestAPIverifyDeleteingExistingEmployee() {
 		int[] ids = {employee.getEmpNumber()};
 		Response response = deleteEmployee(ids);
@@ -73,11 +71,11 @@ public class EmployeeApiTest extends BaseApiTest {
 		TestAPIverifyActivatingNewEmployee();
 	}
 	
-	@Test(description = "")
-	public void E2E() {
-		TestAPIverifyAddingNewEmployee();
-		TestAPIverifyActivatingNewEmployee();
-		TestAPIverifyDeleteingExistingEmployee();
-	}
+//	@Test(description = "")
+//	public void E2E() {
+//		TestAPIverifyAddingNewEmployee();
+//		TestAPIverifyActivatingNewEmployee();
+//		TestAPIverifyDeleteingExistingEmployee();
+//	}
 	
 }
