@@ -6,9 +6,15 @@ https://opensource-demo.orangehrmlive.com/web/index.php/auth/login<br>
 WebDriverManager (Bony Garcia) for managing web drivers<br>
 TestNG for running tests and taking screen shots when test fail<br>
 Allure TBD<br>
+Jenkins TBD<br>
+
 
 Using Hard Assert for UI<br>
 Using Soft Assert for API<br>
+
+Introducing MongoDB to the project as dataBase for inital values of candidates and employees<br>
+Due to frequent restarts of Orange data base, I don't have consistent data which I can use to manipulate.<br>
+
 
 ## Project Structure:
 
@@ -61,7 +67,6 @@ The `BaseTest.java` and `BaseApiTest.java` classes serves as the foundation for 
 1. **TestVerifyUserCanCloseAboutPopup**: Verify that a user can close the "About" popup.
 2. **TestVerifyAboutSection**: Verify the version information in the "About" section.
 3. **TestLogoutUser**: Verify that a user can log out from the system.
-   - **Description**: This test navigates to the user dashboard, clicks the logout button, and verifies that the user is logged out successfully.
 
 # API Test Cases 
 

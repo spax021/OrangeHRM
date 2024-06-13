@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CandidateDTO {
 
+	@JsonProperty("_id")
+    private int _id;
 	@JsonProperty("id")
     private int id;
     @JsonProperty("firstName")
@@ -72,6 +74,15 @@ public class CandidateDTO {
 		this.hasAttachment = hasAttachment;
 		this.consentToKeepData = consentToKeepData;
 	}
+	
+	public int get_Id() {
+		return _id;
+	}
+
+	public void set_Id(int _id) {
+		this._id = _id;
+	}
+	
 
 	public int getId() {
 		return id;

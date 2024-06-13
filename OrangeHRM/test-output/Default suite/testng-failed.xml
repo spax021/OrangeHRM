@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="apiTests.RecruitmentApiTest">
+      <class name="apiTests.E2EAPI">
         <methods>
-          <include name="E2E"/>
-          <include name="setLocal"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="setLocal"/>
+          <include name="TestCreateAndActivateNewEmployee"/>
         </methods>
-      </class> <!-- apiTests.RecruitmentApiTest -->
+      </class> <!-- apiTests.E2EAPI -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

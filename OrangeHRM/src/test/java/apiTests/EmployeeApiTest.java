@@ -31,7 +31,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		sa.assertAll();
 	}
 
-	@Test(priority = -1, description = "Verify that Admin can add new employee")
+	@Test(priority = -1, description = "Verify that Admin can add new employee.")
 	public void TestAPIverifyAddingNewEmployee() {
 		Response response = createNewEmployee(EmployeeFile.getAPIemployeeId(), initEmployee);
 		sa.assertEquals(response.getStatusCode(), 200);
@@ -41,7 +41,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "terminationId"), "null");
 	}
 	
-	@Test(priority = 0, description = "Verify that Admin can activate new employee")
+	@Test(priority = 0, description = "Verify that Admin can activate new employee.")
 	public void TestAPIverifyActivatingNewEmployee() {
 		Response response = activateNewEmployee(employee.getEmpNumber());
 		sa.assertEquals(response.getStatusCode(), 200);
@@ -54,7 +54,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "userRole", "name"), userRole.getName());
 	}
 	
-	@Test(priority = 10, description = " Verify that Admin can delete existing employee")
+	@Test(priority = 10, description = "Verify that Admin can delete existing employee.")
 	public void TestAPIverifyDeleteingExistingEmployee() {
 		int[] ids = {employee.getEmpNumber()};
 		Response response = deleteEmployee(ids);
@@ -65,7 +65,7 @@ public class EmployeeApiTest extends BaseApiTest {
 		}
 	}
 	
-	@Test(description = "")
+	@Test(description = "Verify that Admin can create and activate new employee.")
 	public void TestCreateAndActivateNewEmployee() {
 		TestAPIverifyAddingNewEmployee();
 		TestAPIverifyActivatingNewEmployee();

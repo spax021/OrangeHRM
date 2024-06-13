@@ -65,4 +65,8 @@ public class PropertiesFile {
     public static String getRecruitmentAddNewCandidatePageUrl() {
         return getInstance().getProperty("recruitmentAddNewCandidatePageUrl");
     }
+    
+    public static String getMongoUri() {
+        return getInstance().getProperty("mongoUri");
+    }
 }

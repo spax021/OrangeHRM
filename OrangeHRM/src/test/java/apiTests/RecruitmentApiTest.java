@@ -40,7 +40,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(response.getStatusCode(), 200);
 	}
 	
-	@Test(priority = 0, description = "Verify that Admin can add new candidate")
+	@Test(priority = 0, description = "Verify that Admin can add new candidate.")
 	public void TestAPIverifyAddingNewCandidate() {
 		Response response = createNewCandidate(initCandidate);
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIverifyAddingNewCandidate");
@@ -50,7 +50,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "email"), initCandidate.getEmail());
 	}
 
-	@Test(priority = 1, description = "Precondition: TestAPIverifyAddingNewCandidate() executed. Adding attachment is on different endpoint")
+	@Test(priority = 1, description = "Precondition: TestAPIverifyAddingNewCandidate() executed. Adding attachment is on different endpoint.")
 	public void TestAPIverifyAddingAttachmentToNewCandidate() {
 		Response response = addAttachmentToNewCandidate(Integer.parseInt(CandidateFile.getApiid()));
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIverifyAddingAttachmentToNewCandidate");
@@ -60,7 +60,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertNotEquals(getDataFromJson(response, "data", "attachment", "fileSize"), "0");
 	}
 
-	@Test(priority = 2, description = "Verify existance of a new Candidate")
+	@Test(priority = 2, description = "Verify existance of a new Candidate.")
 	public void TestAPIverifyGetingNewCandidate() {
 		Response response = getCandidate(candidate.getId());  //candidate.getId()
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIverifyGetingNewCandidate");
@@ -71,7 +71,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "vacancy", "id"), String.valueOf(initCandidate.getVacancy().getId()));
 	}
 	
-	@Test(priority = 10, description = "Verify that admin can update new candidate")
+	@Test(priority = 10, description = "Verify that admin can update new candidate.")
 	public void TestAPIverifyUpdateingNewCandidate() {
 		candidate.setFirstName("Marko");
 		candidate.setLastName("Markovic");
@@ -84,7 +84,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "email"), candidate.getEmail());
 	}
 	
-	@Test(priority = 3, description = "Verify that admin can shortlist new candidate")
+	@Test(priority = 3, description = "Verify that admin can shortlist new candidate.")
 	public void TestAPIVerifyShortlistNewCandidate() {
 		Response response = shortlistNewCandidate(candidate.getId());  //candidate.getId()
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIVerifyShortlistNewCandidate");
@@ -104,7 +104,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 	
 	private String interviewId = "";
 	
-	@Test(priority = 4, description = "Verify that admin can schedule an interview with new candidate")
+	@Test(priority = 4, description = "Verify that admin can schedule an interview with new candidate.")
 	public void TestAPIVerifyScheduleInterviewWithNewcandidate() {
 		int[] empIds = {69};
 		String title = "QA Lead";
@@ -129,7 +129,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		interviewId = getDataFromJson(response, "data", "id");
 	}
 	
-	@Test(priority = 5, description = "Verify that admin can mark interview as passed for new candidate")
+	@Test(priority = 5, description = "Verify that admin can mark interview as passed for new candidate.")
 	public void TestAPImarkAsPassedIntervview() {
 		Response response = markInterviewAsPassed(candidate.getId(), interviewId);
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPImarkAsPassedIntervview");
@@ -137,7 +137,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "action", "label"), "Interview Passed");
 	}
 	
-	@Test(priority = 6, description = "Verify that admin can offer a job to new candidate")
+	@Test(priority = 6, description = "Verify that admin can offer a job to new candidate.")
 	public void TestAPIofferAJobToNewCandidate() {
 		Response response = jobOffer(candidate.getId());
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIofferAJob");
@@ -145,7 +145,7 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "action", "label"), "Job Offered");
 	}
 	
-	@Test(priority = 7, description = "Verify that admin can hire new candidate")
+	@Test(priority = 7, description = "Verify that admin can hire new candidate.")
 	public void TestAPIhireNewCandidate() {
 		Response response = hireCandidate(candidate.getId());
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIhireNewCandidate");
@@ -153,17 +153,46 @@ public class RecruitmentApiTest extends BaseApiTest {
 		sa.assertEquals(getDataFromJson(response, "data", "action", "label"), "Hired");
 	}
 	
-	@Test(priority = 10, description = "Precodndition: TestAPIverifyAddingNewCandidate() / Verify that Admin can delete existing candidate")
+	@Test(priority = 10, description = "Verify that Admin can delete existing candidate.")
 	public void TestAPIverifyDeleteingExistingCandidate() {
 		int[] ids = {86};  //candidate.getId()
 		Response response = deleteCandidate(ids);
-		System.out.println(response.asPrettyString());
 		sa.assertEquals(response.getStatusCode(), 200, "Failed at TestAPIverifyDeleteingExistingCandidate");
 		String[] deletedIds = getDataFromJson(response, "data").substring(1, getDataFromJson(response, "data").length() - 1).split(",");
 		for(int i = 0; i < deletedIds.length; i++) {
 			sa.assertEquals(deletedIds[i], String.valueOf(ids[i]));
 		}
 	}
+	
+	
+	@Test
+	public void mondoGet() {
+//		System.out.println(readData("Candidate", 91));
+		
+		List<CandidateDTO> candidates = readData("Candidate", CandidateDTO.class);
+		for (CandidateDTO candidate : candidates) {
+			System.out.println(candidate);
+		}
+		
+		
+	}
+	
+	@Test
+	public void mondoCreate() {
+//		setHiringManager();
+		Response response = getCandidate(123);
+		System.out.println(response.asPrettyString());
+		insertData("Candidate", candidate);
+	}
+	
+	@Test
+	public void mondoUpdate() {
+		Response response = getCandidate(91);
+		System.out.println(response.asPrettyString());
+		updateData("Candidate", candidate);
+	}
+	
+
 
 	@Test
 	public void E2E() {

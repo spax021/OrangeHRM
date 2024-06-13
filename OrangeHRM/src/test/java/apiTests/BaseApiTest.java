@@ -1,11 +1,20 @@
 package apiTests;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import org.testng.Assert;
+import org.bson.Document;
+import org.testng.asserts.SoftAssert;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 import config.CandidateFile;
 import config.EmployeeFile;
+import config.MongoConnection;
 import config.PropertiesFile;
 import dtos.CandidateAttachmentDTO;
 import dtos.CandidateDTO;
@@ -23,12 +32,17 @@ public class BaseApiTest extends Utility {
 	private static String token;
 	
 	private static Cookies cookies;
+	private MongoConnection db;
+	private MongoCollection<Document> collection;
 	protected static CandidateDTO candidate;
 	protected static CandidateAttachmentDTO candidateAttachment;
 	protected static EmployeeDTO employee;
 	protected static UserRoleDTO userRole;
 
 	private static RequestSpecification request;
+
+	private EmployeeDTO initEmployee;
+	private SoftAssert sa;
 	
 	public BaseApiTest() {
 		this.token = "";
@@ -277,5 +291,85 @@ public class BaseApiTest extends Utility {
 		Response response = CRUDoperation.getInstance().put(location, cookies, payload);
 		return response;
 	}
+	
+	public <T> List<T> readData(String collectionType, Class<T> dtoClass) {
+		db = new MongoConnection();
+		collection = db.getCollection(collectionType);
+		
+		List<T> dtoList = new ArrayList<>();
+		
+		ObjectMapper obj = new ObjectMapper();
+		try(MongoCursor<Document> cursor = collection.find().iterator()){
+			while(cursor.hasNext()) {
+				Document doc = cursor.next();
+				T dto = obj.convertValue(doc, dtoClass);
+				dtoList.add(dto);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+//		Document data = collection.find(new Document("id",id)).first();
+//		candidate = populateDTOFromMongo(data.toJson(), CandidateDTO.class);
+		return dtoList;
+	}
+	
+	public <T> void insertData(String collectionType, T object) {
+		db = new MongoConnection();
+		collection = db.getCollection(collectionType);
+		try {
+			ObjectMapper obj = new ObjectMapper();
+			Map<String, Object> map = obj.convertValue(object, Map.class);
+			Document doc = new Document(map);
+			collection.insertOne(doc);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public <T> void updateData(String collectionType, T object) {
+		db = new MongoConnection();
+		collection = db.getCollection(collectionType);
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
